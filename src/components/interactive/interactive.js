@@ -16,8 +16,6 @@ export default function Interactive({ data }) {
       move(event) {
         position.x += event.dx;
         position.y += event.dy;
-
-        target = event.target;
         event.target.style.transform = `translate(${position.x}px, ${position.y}px`;
       },
     },
