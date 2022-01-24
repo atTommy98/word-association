@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  height: 90vh;
+  width: auto;
+  background-color: pink;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.image {
+  background-color: white;
+  height: 400px;
+  width: 400px;
+}
