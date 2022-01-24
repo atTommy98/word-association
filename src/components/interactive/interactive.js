@@ -1,8 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import "interactjs";
 import useSound from "use-sound";
-import correct from "../../sounds/correct.mp3"
+import correct from "../../sounds/correct.mp3";
 
 import css from "./interactive.module.css";
 import interact from "interactjs";
@@ -10,7 +9,7 @@ import interact from "interactjs";
 export default function Interactive({ data }) {
   let position = { x: 0, y: 0 };
 
-  const [playOn] = useSound(correct, {volume: 0.25});
+  const [playOn] = useSound(correct, { volume: 0.25 });
 
   interact(".text").draggable({
     listeners: {
@@ -27,7 +26,7 @@ export default function Interactive({ data }) {
 
   interact("img").dropzone({
     ondrop: function (e) {
-      console.log("Drop!")
+      console.log("Drop!");
       playOn();
     },
   });
