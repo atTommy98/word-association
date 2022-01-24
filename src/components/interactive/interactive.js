@@ -1,22 +1,44 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import "interactjs";
 
 import css from "./interactive.module.css";
+import interact from "interactjs";
 
-export default function Interactive({data}) {
+export default function Interactive({ data }) {
+  let position = { x: 0, y: 0 };
 
-  console.log(data);
+  interact(".text").draggable({
+    listeners: {
+      start(event) {
+        console.log(event.type, event.target);
+      },
+      move(event) {
+        position.x += event.dx;
+        position.y += event.dy;
+
+        target = event.target;
+        event.target.style.transform = `translate(${position.x}px, ${position.y}px`;
+      },
+    },
+  });
 
   return (
     <div className={css.container}>
       <div className={css.image}>
-        <img className={css.image} src={data.length > 1 ? data[0].url : ""}></img>
+        <img
+          className={css.image}
+          src={data.length > 1 ? data[0].url : ""}
+        ></img>
       </div>
-      <div className={css.text}>
-        <h1>{data.length > 1 ? data[0].name : ""}</h1>
+      <div class="text">
+        <h1 className={css.text}>{data.length > 1 ? data[0].name : ""}</h1>
       </div>
       <div className={css.image}>
-        <img className={css.image} src={data.length > 1 ? data[1].url : ""}></img>
+        <img
+          className={css.image}
+          src={data.length > 1 ? data[1].url : ""}
+        ></img>
       </div>
     </div>
   );

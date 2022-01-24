@@ -5,10 +5,10 @@ import css from "./controls.module.css";
 
 export default function Controls({ parentCallback }) {
   useEffect(() => {
-    pickRandomObjects(fruits);
+    reset(fruits);
   }, []);
 
-  function pickRandomObjects(fruits) {
+  function reset(fruits) {
     // Randomly select two objects
     let firstFruit = fruits[Math.floor(Math.random() * fruits.length)];
     let secondFruit = fruits[Math.floor(Math.random() * fruits.length)];
@@ -44,7 +44,7 @@ export default function Controls({ parentCallback }) {
 
   return (
     <div className={css.container}>
-      <button className={css.button} onClick={() => pickRandomObjects(fruits)}>
+      <button className={css.button} onClick={() => reset(fruits)}>
         RESET
       </button>
     </div>
