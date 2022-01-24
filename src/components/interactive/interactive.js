@@ -3,49 +3,20 @@ import { useState, useEffect } from "react";
 
 import css from "./interactive.module.css";
 
-export default function Interactive() {
-  const fruits = [
-    {
-      name: "Potato",
-      url: "",
-    },
-    {
-      name: "Apple",
-      url: "",
-    },
-    {
-      name: "Pineapple",
-      url: "",
-    },
-    {
-      name: "Pear",
-      url: "",
-    },
-  ];
+export default function Interactive({data}) {
 
-  let word = "";
-
-  function pickRandomObjects(fruits) {
-    // Randomly select two objects
-    let firstFruit = fruits[Math.floor(Math.random() * fruits.length)];
-    let secondFruit = fruits[Math.floor(Math.random() * fruits.length)];
-
-    // Ensure fruits selected are never the same
-    while (secondFruit.name === firstFruit.name) {
-      secondFruit = fruits[Math.floor(Math.random() * fruits.length)];
-    }
-  }
+  console.log(data);
 
   return (
     <div className={css.container}>
       <div className={css.image}>
-        <img></img>
+        <img className={css.image} src={data.length > 1 ? data[0].url : ""}></img>
       </div>
-      <div onClick={() => pickRandomObjects(fruits)} className={css.text}>
-        <h1>POTATO</h1>
+      <div className={css.text}>
+        <h1>{data.length > 1 ? data[0].name : ""}</h1>
       </div>
       <div className={css.image}>
-        <img url></img>
+        <img className={css.image} src={data.length > 1 ? data[1].url : ""}></img>
       </div>
     </div>
   );

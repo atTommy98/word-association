@@ -1,17 +1,24 @@
-import logo from "./logo.svg";
 import Controls from "./components/controls/controls.js";
 import Interactive from "./components/interactive/interactive.js";
+
+import React, { useEffect, useState } from "react";
 
 import "./App.css";
 
 function App() {
+  const [data, setData] = useState([]);
+
+  function handleCallback(childData) {
+    setData(childData);
+  }
+
   return (
     <div className="App">
       <div className="controls">
-        <Controls></Controls>
+        <Controls parentCallback={handleCallback}></Controls>
       </div>
       <div className="interactive">
-        <Interactive></Interactive>
+        <Interactive data={data}></Interactive>
       </div>
     </div>
   );
